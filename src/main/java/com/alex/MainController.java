@@ -2,6 +2,7 @@ package com.alex;
 
 import com.alex.dao.UserDAO;
 import com.alex.model.User;
+import com.alex.util.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +20,9 @@ public class MainController {
 
     @Autowired
     private UserDAO userDAO;
+
+    @Autowired
+    private UserValidator userValidator;
 
     static List<User> users = new ArrayList<>();
     @GetMapping("/")
@@ -60,10 +64,12 @@ public class MainController {
     }
     @PostMapping("/users/new")
     public String singUp(@ModelAttribute @Valid User user, BindingResult result){
+        userValidator.validate(user, result);
         if(result.hasErrors()){
             return "/sign_up";
         }
-            users.add(user);
+            //users.add(user);
+            userDAO.add(user);
             return "redirect:/users";
 
     }

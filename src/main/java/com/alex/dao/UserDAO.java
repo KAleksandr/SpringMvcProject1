@@ -50,4 +50,36 @@ public class UserDAO {
         }
         return users;
     }
+    public User getOne(String email){
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement(
+                    "select *from users where email = ?");
+                    ps.setString(1,email);
+            ResultSet set = ps.executeQuery();
+            if(set.next()){
+                User user = new User(set.getString(1), set.getString(2), set.getString(3));
+                return user;
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+    public  void add(User user) {
+        PreparedStatement ps = null;
+        try {
+            ps = conn.prepareStatement("INSERT INTO users VALUE (?,?,?)");
+            ps.setString(1,user.getName());
+            ps.setString(2,user.getSurname());
+            ps.setString(3,user.getEmail());
+            ps.execute();
+        } catch (SQLException ignore) { }
+
+
+
+
+
+    }
 }
