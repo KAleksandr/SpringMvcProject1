@@ -1,4 +1,6 @@
 /.idea
-
+.gitignore
 /target
 *.iml
+/lib
+/sample
