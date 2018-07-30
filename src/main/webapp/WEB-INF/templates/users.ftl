@@ -2,7 +2,7 @@
 <head>
     <title>Users</title>
 
-    <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -19,6 +19,7 @@
             <th>Firstname</th>
             <th>Lastname</th>
             <th>Email</th>
+            <th>Sex</th>
             <th></th>
         </tr>
         </thead>
@@ -29,7 +30,9 @@
             <td>${user.name}</td>
             <td>${user.surname}</td>
             <td>${user.email}</td>
-            <td><button type="button" class="btn btn-primary disabled">Delete</button></td>
+            <td>${user.sex}</td>
+            <td><button type="button" class="btn btn-primary disabled">Edit</button>
+                <button type="button" class="btn btn-warning disabled">Delete</button></td>
         </tr>
 
         </#list>

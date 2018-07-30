@@ -45,7 +45,7 @@ public class UserDAO {
 
         ResultSet rs = ps.executeQuery();
         while (rs.next()){
-            User user = new User(rs.getString(1), rs.getString(2), rs.getString(3));
+            User user = new User(rs.getString(1), rs.getString(2), rs.getString(3),rs.getString(4));
             users.add(user);
         }
         return users;
@@ -58,7 +58,7 @@ public class UserDAO {
                     ps.setString(1,email);
             ResultSet set = ps.executeQuery();
             if(set.next()){
-                User user = new User(set.getString(1), set.getString(2), set.getString(3));
+                User user = new User(set.getString(1), set.getString(2), set.getString(3),set.getString(4));
                 return user;
             }
 
@@ -70,10 +70,11 @@ public class UserDAO {
     public  void add(User user) {
         PreparedStatement ps = null;
         try {
-            ps = conn.prepareStatement("INSERT INTO users VALUE (?,?,?)");
+            ps = conn.prepareStatement("INSERT INTO users VALUE (?,?,?,?)");
             ps.setString(1,user.getName());
             ps.setString(2,user.getSurname());
             ps.setString(3,user.getEmail());
+            ps.setString(4,user.getSex());
             ps.execute();
         } catch (SQLException ignore) { }
 

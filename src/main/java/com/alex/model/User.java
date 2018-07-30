@@ -15,6 +15,17 @@ public class User {
     @NotBlank(message = "Email is required")
     @Email
     private String email;
+    @NotBlank
+
+    private String sex;
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
 
     public User() {
     }
@@ -23,6 +34,14 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.email = email;
+
+    }
+
+    public User(String name,  String surname, String email, String sex) {
+        this.name = name;
+        this.surname = surname;
+        this.email = email;
+        this.sex = sex;
     }
 
     public String getName() {

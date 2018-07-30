@@ -39,6 +39,18 @@
         </div>
     </div>
         <div class="form-group">
+        <label class="control-label col-sm-2" for="sex">Sex:</label>
+        <div class="col-sm-10">
+        <select class="custom-select-sm"  name="sex">
+
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+            </select>
+            <#--<@sf.input path="sex"/>-->
+            <@sf.errors path="sex"/>
+        </div>
+        </div>
+        <div class="form-group">
             <div class="col-sm-offset-2 col-sm-10">
                 <div class="checkbox">
                     <label><input type="checkbox" name="remember"> Remember me</label>
