@@ -17,6 +17,13 @@
         tr:nth-child(even) {
             background-color: #dddddd;
         }
+        tr{
+            background-color: #548e2e;
+        }
+        #myDiv {
+            -webkit-transform: rotateY(150deg); /* Safari */
+            transform: rotateY(150deg); /* Standard syntax */
+        }
     </style>
 </head>
 <body>
@@ -38,7 +45,9 @@
       </#list>
 </table>
 <#else>
+<div id="myDiv">
 <h1>No users yet</h1>
+</div>
 </#if>
 
 

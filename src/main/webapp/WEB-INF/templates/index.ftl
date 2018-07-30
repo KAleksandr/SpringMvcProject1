@@ -7,6 +7,7 @@
 <h1><a href="/test" >Hello world! </a></h1>
 <h3><a href="/test" >Test! </a></h3>
 <h3><a href="/controller" >Controller </a></h3>
+<h3><a href="/users" >Users </a></h3>
 
 </body>
 </html>

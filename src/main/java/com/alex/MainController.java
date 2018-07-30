@@ -1,18 +1,25 @@
 package com.alex;
 
+import com.alex.dao.UserDAO;
 import com.alex.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import java.util.List;
 
 @Controller
 public class MainController {
+
+    @Autowired
+    private UserDAO userDAO;
+
     static List<User> users = new ArrayList<>();
     @GetMapping("/")
     public String view(){
@@ -42,8 +49,8 @@ public class MainController {
     }
 
     @GetMapping("/users")
-    public String getUsers(Model model){
-        model.addAttribute("users", users);
+    public String getUsers(Model model) throws SQLException {
+        model.addAttribute("users", userDAO.getAll());
         return "/users";
     }
     @GetMapping("/users/new")
