@@ -1,9 +1,10 @@
 package com.alex;
 
-import com.alex.dao.UserDAO;
+import com.alex.dao.UserDao;
 import com.alex.model.User;
 import com.alex.util.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +18,8 @@ import java.util.List;
 public class MainController {
 
     @Autowired
-    private UserDAO userDAO;
+    @Qualifier("hibernateUserDao")
+    private UserDao UserDao;
 
     @Autowired
     private UserValidator userValidator;
@@ -52,7 +54,7 @@ public class MainController {
 
     @GetMapping("/users")
     public String getUsers(Model model) {
-        model.addAttribute("users", userDAO.getAll());
+        model.addAttribute("users", UserDao.getAll());
         return "/users";
     }
     @GetMapping("/users/new")
@@ -66,7 +68,7 @@ public class MainController {
         if(result.hasErrors()){
             return "/sign_up";
         }
-            userDAO.add(user);
+            UserDao.add(user);
             return "redirect:/users";
 
     }
